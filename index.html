@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкальный сайт</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #202124;
+            color: #e8eaed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1>Нажмите на экран, чтобы включить музыку!</h1>
+    <audio id="music" src="musik.mp3"></audio>
+    <button onclick="redirectToLink()">Перейти по ссылке</button>
+
+    <script>
+        // Функция для воспроизведения музыки
+        function playMusic() {
+            const music = document.getElementById('music');
+            music.play().catch(error => {
+                console.log('Ошибка воспроизведения:', error);
+            });
+        }
+
+        // Ждем полной загрузки страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            // Добавляем обработчик клика на body только после загрузки страницы
+            document.body.addEventListener('click', playMusic);
+        });
+
+        function redirectToLink() {
+            window.location.href = "https://your-link.com"; // Укажите нужную ссылку
+        }
+    </script>
+</body>
+</html>
